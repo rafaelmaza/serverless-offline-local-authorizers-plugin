@@ -46,11 +46,11 @@ export class AwsLocalAuthorizerPlugin {
             if (functionDef && Array.isArray(functionDef.events)) {
 
                 for (const event of functionDef.events) {
-                    if (!event.http) {
+                    if (!event.httpApi) {
                         continue;
                     }
 
-                    const http = event.http as any;
+                    const http = event.httpApi as any;
                     let localAuthorizerDef = (http.authorizer && http.authorizer.localAuthorizer) ?  http.authorizer.localAuthorizer : http.localAuthorizer;
 
                     if (typeof localAuthorizerDef === "string") {
